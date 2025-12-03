@@ -53,13 +53,13 @@ const POLL_DATA = {
       { id: 1, name: "", symbol: null },
       // ... fill up to 10
       { id: 2, name: "", symbol: null },
-      { id: 4, name: "", symbol: null },
       {
         id: 3,
         name: "ഷാഹിന നിയാസി ",
         symbol: ladderSymbol,
         sub: "മലപ്പുറം ജില്ലാ പഞ്ചായത്ത് ആനക്കായം ഡിവിഷൻ ",
       },
+      { id: 4, name: "", symbol: null },
       { id: 4, name: "", symbol: null },
       { id: 4, name: "", symbol: null },
       { id: 5, name: "", symbol: null },
