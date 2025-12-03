@@ -294,3 +294,292 @@ body {
   0% { opacity: 0; transform: scale(0.5); }
   100% { opacity: 1; transform: scale(1); }
 }
+
+/* General Page Background */
+.page-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Noto Sans Malayalam', sans-serif; /* Ensure you have this font imported in index.html */
+}
+
+/* --- THE POSTER CARD --- */
+.poster-card {
+  background: white;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  text-align: center;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Import Font */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700;900&display=swap'); */
+
+/* --- Page Layout (Perfect Centering) --- */
+.main-container {
+  min-height: 100dvh; /* Adapts to mobile browser bars */
+  width: 100%;
+  background: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Noto Sans Malayalam', sans-serif;
+}
+
+/* --- The Poster Card --- */
+.poster-frame {
+  width: 100%;
+  max-width: 350px; /* Optimal width for mobile readability */
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  border: 4px solid #ffffff; /* White border creates a clean frame */
+  transition: transform 0.3s ease;
+}
+
+/* Green Curved Top */
+.poster-top-pattern {
+  height: 125px;
+  background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+  border-radius: 0 0 50% 50% / 0 0 25px 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.poster-content {
+  position: relative;
+  z-index: 1;
+  padding: 25px 15px 15px 15px;
+}
+
+/* --- Typography --- */
+.slogan-box {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.slogan-sub {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.highlight-gold {
+  color: #fcd34d; /* Bright Gold */
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.slogan-main {
+  font-size: clamp(1.2rem, 5vw, 1.4rem); /* Responsive font size */
+  font-weight: 700;
+  margin: 4px 0 0 0;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* --- Photo Area --- */
+.photo-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.photo-ring {
+  width: 125px; /* Slightly smaller for better mobile fit */
+  height: 125px;
+  padding: 4px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  margin: 0 auto;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #f1f5f9;
+}
+
+/* Badge Logic */
+.status-badge {
+  position: absolute;
+  bottom: 5px;
+  right: -5px;
+  background: #ffffff;
+  padding: 4px 10px 4px 4px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border: 1px solid #e2e8f0;
+  transform: rotate(-5deg);
+}
+
+.check-circle {
+  background: #22c55e;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-badge span {
+  color: #15803d;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- Info Section --- */
+.info-section {
+  margin-top: 5px;
+}
+
+.name-text {
+  font-size: clamp(1.3rem, 6vw, 1.6rem); /* Scales with screen width */
+  color: #1e293b;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.divider-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.divider-line::before, .divider-line::after {
+  content: "";
+  height: 1px;
+  width: 30px;
+  background: #cbd5e1;
+  display: block;
+}
+
+.star-icon {
+  color: #eab308;
+  margin: 0 8px;
+  font-size: 0.8rem;
+}
+
+.meta-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.sub-text {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section-pill {
+  background: #ecfdf5;
+  color: #166534;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: 1px solid #d1fae5;
+}
+
+/* --- Symbol --- */
+.symbol-box {
+  margin-top: 15px;
+  padding: 8px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+  display: inline-block;
+}
+
+.symbol-img {
+  height: 60px; /* Controlled height */
+  width: auto;
+  display: block;
+}
+
+.poster-bottom-bar {
+  height: 8px;
+  background: #15803d;
+  width: 100%;
+}
+
+/* --- Retry Button (Responsive) --- */
+.retry-btn {
+  margin-top: 30px;
+  background: white;
+  border: none;
+  color: #64748b;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.retry-btn:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+/* --- Mobile Specific Tweaks --- */
+@media (max-width: 380px) {
+  .poster-frame {
+    max-width: 100%;
+  }
+  .poster-top-pattern {
+    height: 125px;
+  }
+  .photo-ring {
+    width: 125px;
+    height: 125px;
+  }
+  .name-text {
+    font-size: 1.35rem;
+  }
+  .slogan-main {
+    font-size: 1.1rem;
+  }
+}

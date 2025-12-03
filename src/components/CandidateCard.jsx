@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Check } from 'lucide-react';
+import { Check, RotateCcw } from 'lucide-react'; 
 import firoz from '../assets/firoz.jpeg'; 
-import shahina from '../assets/shahina.png'
+import shahina from '../assets/shahina.png';
 import safeer from '../assets/safeer.png';
 
 const CandidateCard = () => {
@@ -11,7 +11,6 @@ const CandidateCard = () => {
   const { candidate, section } = location.state || {};
 
   useEffect(() => {
-    // SECURITY: If user tries to open this page directly, send them Home
     if (!candidate) {
       navigate('/', { replace: true });
     }
@@ -19,81 +18,94 @@ const CandidateCard = () => {
 
   if (!candidate) return null;
 
-  // Map levels to photos (ward -> firoz, block -> safeer, district -> shahina)
+  // --- Image Logic ---
   const photos = {
     ward: firoz,
     block: safeer,
     district: shahina,
   };
 
-  // pick photo: explicit candidate.photo > level mapping > name heuristic > default (firoz)
   const candidatePhoto =
     candidate.photo ||
     photos[(candidate.level || '').toLowerCase()] ||
-    (candidate.name && candidate.name.toLowerCase().includes('ഫിറോസ് ഖാൻ കരിമ്പിൽ') ? firoz :
+    (candidate.name && candidate.name.toLowerCase().includes('ഫിറോസ്') ? firoz :
      candidate.name && candidate.name.toLowerCase().includes('സഫീർ') ? safeer :
      candidate.name && candidate.name.toLowerCase().includes('ഷാഹിന') ? shahina :
      firoz);
 
-  // use provided symbol else nothing (adjust if you have a default symbol asset)
   const symbolSrc = candidate.symbol || null;
 
-  // Malayalam ordinal helper
+  // --- Ordinal Logic ---
   const malayalamOrdinal = (n) => {
     const num = Number(n) || 0;
-    switch (num) {
-      case 1: return 'ഒന്നാമത്';
-      case 2: return 'രണ്ടാമത്';
-      case 3: return 'മൂന്നാമത്';
-      case 4: return 'നാലാമത്';
-      case 5: return 'അഞ്ചാമത്';
-      case 6: return 'ആറാമത്';
-      case 7: return 'ഏഴാമത്';
-      case 8: return 'എട്ടാമത്';
-      case 9: return 'ഒമ്പതാമത്';
-      case 10: return 'പത്താമത്';
-      default: return num > 0 ? `${num}-ആം` : '---';
-    }
+    const map = {
+        1: 'ഒന്നാമത്', 2: 'രണ്ടാമത്', 3: 'മൂന്നാമത്', 4: 'നാലാമത്',
+        5: 'അഞ്ചാമത്', 6: 'ആറാമത്', 7: 'ഏഴാമത്', 8: 'എട്ടാമത്', 9: 'ഒമ്പതാമത്', 10: 'പത്താമത്'
+    };
+    return map[num] || (num > 0 ? `${num}-ആം` : '---');
   };
 
   const ordinalText = malayalamOrdinal(candidate.id || candidate.rank || 0);
 
   return (
-    <div className="container profile-wrapper">
-      <div className="slogan">
-        വോട്ടിംഗ് മെഷീനിൽ {ordinalText},<br/>
-        ജനമനസ്സുകളിൽ ഒന്നാമത്
-      </div>
+    <div className="main-container">
+      
+      <div className="poster-frame">
+        {/* Green Curved Top */}
+        <div className="poster-top-pattern"></div>
 
-      <div className="card">
-        {/* Photo */}
-        <div className="card-header-image">
-             <img src={candidatePhoto} alt={candidate.name || "Candidate"} className="candidate-photo" />
-        </div>
+        <div className="poster-content">
+          
+          {/* Slogan */}
+          <div className="slogan-box">
+             <p className="slogan-sub">വോട്ടിംഗ് മെഷീനിൽ <span className="highlight-gold">{ordinalText}</span></p>
+             <h1 className="slogan-main">ജനമനസ്സുകളിൽ ഒന്നാമത്</h1>
+          </div>
 
-        {/* Badge */}
-        <div className="voted-badge">
-          <span>Voted {section}</span> <Check size={16} />
-        </div>
+          {/* Photo + Voted Badge */}
+          <div className="photo-wrapper">
+            <div className="photo-ring">
+              <img src={candidatePhoto} alt={candidate.name} className="profile-pic" />
+            </div>
+            <div className="status-badge">
+                <div className="check-circle">
+                    <Check size={16} strokeWidth={4} />
+                </div>
+                <span>VOTED</span>
+            </div>
+          </div>
 
-        {/* Text */}
-        <div className="card-body">
-          <h2 className="result-name">{candidate.name}</h2>
-          <p className="result-sub">{candidate.sub || "WARD 9"}</p>
+          {/* Details */}
+          <div className="info-section">
+            <h2 className="name-text">{candidate.name}</h2>
+            
+            <div className="divider-line">
+                <span className="star-icon">★</span>
+            </div>
+            
+            <div className="meta-tags">
+                 <span className="sub-text">{candidate.sub || "WARD MEMBER"}</span>
+                 {section && <span className="section-pill">{section}</span>}
+            </div>
+          </div>
 
+          {/* Symbol */}
           {symbolSrc && (
-            <img 
-              src={symbolSrc} 
-              alt="Symbol" 
-              className="big-symbol" 
-            />
+            <div className="symbol-box">
+                <img src={symbolSrc} alt="Election Symbol" className="symbol-img" />
+            </div>
           )}
         </div>
+        
+        {/* Green Bottom Bar */}
+        <div className="poster-bottom-bar"></div>
       </div>
 
-      <button className="ribbon-btn" onClick={() => navigate('/')}>
-        Vote Again
+      <button className="retry-btn" onClick={() => navigate('/')}>
+        <RotateCcw size={18} />
+        <span>Vote Another Person</span>
       </button>
+
     </div>
   );
 };
