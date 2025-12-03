@@ -62,7 +62,7 @@ const CandidateCard = () => {
     <div className="container profile-wrapper">
       <div className="slogan">
         വോട്ടിംഗ് മെഷീനിൽ {ordinalText},<br/>
-        ജനമനസ്സുകളിൽ {ordinalText}
+        ജനമനസ്സുകളിൽ ഒന്നാമത്
       </div>
 
       <div className="card">

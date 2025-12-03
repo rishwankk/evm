@@ -37,9 +37,9 @@ const POLL_DATA = {
     label: "District",
     candidates: [
       { id: 1, name: "", symbol: null },
-      { id: 2, name: "ഷാഹിന നിയാസി ", symbol: ladderSymbol ,sub:"മലപ്പുറം ജില്ലാ പഞ്ചായത്ത് ആനക്കായം ഡിവിഷൻ "},
       // ... fill up to 10
-      { id: 3, name: "", symbol: null }, { id: 4, name: "", symbol: null },
+      { id: 2, name: "", symbol: null }, { id: 4, name: "", symbol: null },
+      { id: 3, name: "ഷാഹിന നിയാസി ", symbol: ladderSymbol ,sub:"മലപ്പുറം ജില്ലാ പഞ്ചായത്ത് ആനക്കായം ഡിവിഷൻ "},
       { id: 5, name: "", symbol: null }, { id: 6, name: "", symbol: null },
       { id: 7, name: "", symbol: null }, { id: 8, name: "", symbol: null },
       { id: 9, name: "", symbol: null }, { id: 10, name: "", symbol: null },
